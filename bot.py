@@ -46,13 +46,6 @@ if time_to_del is None:
     exit(1)
 
 
-@client.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
-async def on_pm_message(event):
-    await event.reply(
-        "Hi. I'm an auto deleter userbot. I can delete messages in chats after a specific time interval.\nYou cannot use me here, contact @adishsuresh "
-    )
-
-
 @client.on(events.NewMessage(chats=WORK_CHAT_IDS))
 async def listen_to_delete(event):
     await asyncio.sleep(time_to_del)
